@@ -19,4 +19,4 @@ echo "Welcome to Employee Wage Computation Prgram on Master Branch"
 
 	DailyWage=$(($WorkingHrs*$EmpWagePerHr))
 
-	echo "Employee got $DailyWage Today"
+	echo "Employee earn $DailyWage Today"
