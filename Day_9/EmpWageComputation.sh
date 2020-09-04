@@ -4,26 +4,25 @@ echo "Welcome to Employee Wage Computation Prgram on Master Branch"
 
 
 
-	EmpAttendance=$((RANDOM%2))
+	EmpAttendance=$((RANDOM%3))
 
 	EmpWagePerHr=20
 
-	if [ $EmpAttendance -eq 0 ]
-	then
-		echo "Employee is Absent"
+	case $EmpAttendance in
+
+	0) echo "Employee is Absent"
 		WorkingHrs=0
-	else
-		echo "Employee is Present"
-		EmoFullHalf=$((RANDOM%2)) # 0 for Half Day , 1 for Full Day
-		if [ $EmpFullHalf -eq 0 ]
-		then
-			WorkingHrs=4
-			echo "Employee Work For Half Day"
-		else
-			WorkingHrs=8
-			echo "Employee Work For Full Day"
-		fi
-	fi
+	;;
+
+	1)	echo "Employee is Present for Half Day"
+		WorkingHrs=4
+	;;
+
+	2)	echo "Employee Work For Full Day"
+		WorkingHrs=8
+	;;
+
+	esac
 
 	DailyWage=$(($WorkingHrs*$EmpWagePerHr))
 
