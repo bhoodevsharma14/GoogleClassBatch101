@@ -14,7 +14,15 @@ echo "Welcome to Employee Wage Computation Prgram on Master Branch"
 		WorkingHrs=0
 	else
 		echo "Employee is Present"
-		WorkingHrs=8
+		EmoFullHalf=$((RANDOM%2)) # 0 for Half Day , 1 for Full Day
+		if [ $EmpFullHalf -eq 0 ]
+		then
+			WorkingHrs=4
+			echo "Employee Work For Half Day"
+		else
+			WorkingHrs=8
+			echo "Employee Work For Full Day"
+		fi
 	fi
 
 	DailyWage=$(($WorkingHrs*$EmpWagePerHr))
