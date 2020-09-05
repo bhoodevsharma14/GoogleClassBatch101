@@ -1,29 +1,35 @@
 #!/bin/bash -x
 
-echo "Welcome to Employee Wage Computation Prgram on Master Branch"
+	echo "Welcome to Employee Wage Computation"
 
+	TotalWage=0
 
+	for((day=1;day<=20;day++))
+	do
 
-	EmpAttendance=$((RANDOM%3))
+		EmpAttendance=$((RANDOM%3))
 
-	EmpWagePerHr=20
+		EmpWagePerHr=20
 
-	case $EmpAttendance in
+		case $EmpAttendance in
 
-	0) echo "Employee is Absent"
-		WorkingHrs=0
-	;;
+		0) WorkingHrs=0	# Employee is Absent
+		;;
 
-	1)	echo "Employee is Present for Half Day"
-		WorkingHrs=4
-	;;
+		1)	WorkingHrs=4 	# Employee is Present for Half Day
+		;;
 
-	2)	echo "Employee Work For Full Day"
-		WorkingHrs=8
-	;;
+		2)	WorkingHrs=8	# Employee Work For Full Day
+		;;
 
-	esac
+		esac
 
 	DailyWage=$(($WorkingHrs*$EmpWagePerHr))
 
-	echo "Employee earn $DailyWage Today"
+	((TotalWage+=DailyWage))
+
+	done
+
+
+
+	echo "Employee earn $TotalWage This Month"
