@@ -1,8 +1,17 @@
-#!/bin/bash -x
+#! /bin/bash -x
 
 	echo "Welcome to Employee Wage Computation"
 
 	TotalWage=0
+	TotalWorkingHrs=100
+	EmpWorkingHrs=0
+	WorkingDays=0
+
+	function getWorkingHrs()
+	{
+		echo "Employee Work For $EmpWorkingHrs hr In This Month"
+	}
+
 
 	for((day=1;day<=20;day++))
 	do
@@ -17,19 +26,28 @@
 		;;
 
 		1)	WorkingHrs=4 	# Employee is Present for Half Day
+			((WorkingDays++))
+			((EmpWorkingHrs+=WorkingHrs))
 		;;
 
 		2)	WorkingHrs=8	# Employee Work For Full Day
+			((WorkingDay++))
+			((EmpWorkingHrs+=WorkingHrs))
 		;;
 
 		esac
 
-	DailyWage=$(($WorkingHrs*$EmpWagePerHr))
+		DailyWage=$(($WorkingHrs*$EmpWagePerHr))
 
-	((TotalWage+=DailyWage))
+		((TotalWage+=DailyWage))
+
+		if [ $EmpWorkingHrs -ge $TotalWorkingHrs ]
+		then
+			break
+		fi
 
 	done
 
+	getWorkingHrs
 
-
-	echo "Employee earn $TotalWage This Month"
+	echo "Employee earn Rs.$TotalWage ,this Month"
