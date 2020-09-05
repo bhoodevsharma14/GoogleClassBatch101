@@ -39,6 +39,8 @@
 
 		DailyWage=$(($WorkingHrs*$EmpWagePerHr))
 
+		DailyWageData+=($DailyWage)
+
 		((TotalWage+=DailyWage))
 
 		if [ $EmpWorkingHrs -ge $TotalWorkingHrs ]
@@ -51,3 +53,5 @@
 	getWorkingHrs
 
 	echo "Employee earn Rs.$TotalWage ,this Month"
+
+	echo "Employee Daily Wage Data is ${DailyWageData[@]}"
